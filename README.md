@@ -34,19 +34,23 @@ in `house_prices.py`
 The first thing to do is to implement the `predict` method. This should
 be straightforward. Remember that the equation for our linear system is
 
+```
 y = wx + b
+```
 
 ### Cost functions
 
 The next step is to implement the loss and gradient. The equation for
 the Mean-squared loss is:
 
-`J = 1/N ∑(f(X_i, W) - y_i)^2 + lambda*R(W)
+```
+J = 1/N ∑(f(X_i, W) - y_i)^2 + lambda*R(W)
+```
 
 Where f is our aforementioned prediction function and N is the number of
 data points. W is the weights matrix [w b]. Lambda is the regularisation 
 strength and R is our Regularisaion function. Feel free to try others, 
-but start off with Weight Decay R(W) = W.T W
+but start off with Weight Decay `R(W) = W.T W`
 
 You will also need to calculate the partial derivatives of the loss, L with
 respect to the two parts of our model, W and b.
