@@ -6,7 +6,7 @@ def load_data(filename):
     data = np.genfromtxt(filename, names=True, delimiter=',')
     # Assign about 1/5 to test
     data_size = np.size(data)
-    test_size = data_size/5
+    test_size = int(data_size/5)
     training_size = 4 * test_size
 
     training = data[0:training_size]
