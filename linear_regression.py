@@ -48,7 +48,7 @@ class LinearRegression:
         return y
 
 
-    def train(self, X, y, learning_rate, num_iters, do_live_plotting=True):
+    def train(self, X, y, learning_rate, num_iters, reg, do_live_plotting=True):
         '''Do gradient descent and iteratively update your weights based on
            the loss
            Inputs:
