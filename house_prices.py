@@ -65,12 +65,12 @@ if __name__ == "__main__":
     # TODO - Tune these. You may want to set aside a section of your training
     # data as your "validation" set and try lots of values to see what works best
     ##
-    learning_rate = 0
+    learning_rate = 1e-7
     number_of_iterations = 50
     regularisation_strength = 0
 
     # May want to set this to false when tuning your hypeparameters
-    animate = False
+    animate = True
 
     # Train our linear regression model
     linear_regression = LinearRegression(loss_axes, plot_axes)

@@ -27,8 +27,15 @@ class LinearRegression:
         ##
         # TODO YOUR CODE HERE
         ##
-        loss = 0
-        dW = np.zeros(self.W.shape)
+        predictions = self.predict(X)
+        num_inputs = np.size(X)
+        diff = (y - predictions)
+        loss = (np.sum(diff**2))/num_inputs + reg * np.sum(self.W**2)
+
+
+        dW = (-(2.0/num_inputs) *
+                np.array([np.sum(X.dot(diff)), np.sum(diff)])
+                + 2 * reg * self.W)
 
         # End
         return loss, dW
@@ -41,11 +48,11 @@ class LinearRegression:
            Returns:
                Array of predicted values of size N
         '''
-        y = np.zeros(X.shape)
         ##
         # TODO YOUR CODE HERE
         ##
-        return y
+        Xe = np.array([X, np.ones(X.shape)])
+        return self.W.dot(Xe)
 
 
     def train(self, X, y, learning_rate, num_iters, reg, do_live_plotting=True):
@@ -68,6 +75,9 @@ class LinearRegression:
             ##
             # TODO YOUR CODE HERE
             ##
+            loss, dW = self.compute_loss(X, y, reg)
+            self.W -= learning_rate * dW
+            loss_history.append(loss)
 
             if do_live_plotting:
                 self.update_live_plot(X, loss_history)
